@@ -57,8 +57,8 @@ class MarcField:
         for subfield in subfields:
             subf_dict = LOOKUP["fields"][n_field]["subfields"][subfield]
             subfield_record = namedtuple('subfield', ['code', 'label'])
-            subfield_record(subfield, subf_dict.get("label"))
-            output.append(subfield_record)
+            a_record = subfield_record(subfield, subf_dict.get("label"))
+            output.append(a_record)
         return output
 
 class MarcFieldSearch:
