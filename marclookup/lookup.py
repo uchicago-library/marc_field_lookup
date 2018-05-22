@@ -10,8 +10,23 @@ from . import DATA as LOOKUP
 
 class MarcField:
     """a class for finding a particular MARC field and its related subfields
+
+    Usage:
+        mf = MarcField(field='245')
+        print(mf.field)
+        print(mf.label)
+    
     """
     def __init__(self, field=None, field_label=None):
+        """instantiates an instance of the class
+
+        KWArgs
+            field (str): a string corresponding to a MARC field number. Ex: 245, 856, 600.
+            field_label (str): a string corresponding to a label for a MARC field. Example: Title Statement
+
+        Returns:
+            MarcField. An instance of the MarcField class.
+        """
         if field:
             self.field, self.label,\
              self.subfields = self._find_matching_field_by_code(field)
@@ -48,8 +63,29 @@ class MarcField:
 
 class MarcFieldSearch:
     """a class to search for MARC fields matching a particular label string
+
+    Usage: 
+        field_search = MarcFieldSearch(field_label="Title Statement")
+        for field in field_search:
+            ...
+            # do something
+
+     Search results are objects with the following properties:
+   
+    - marc_field
+    - marc_field_label
     """
     def __init__(self, field_label=None, partial_phrase=None):
+        """instantiates an instance of the class
+
+        KWArgs
+            field_label (str): a string matching exactly 1 MARC field label
+            partial_phrase (str): a string that may be in 1 or MARC field labels
+
+        Returns:
+            MarcFieldSearch. An instance of the MarcFieldSearch class.
+        """
+ 
         self.field_options = self._find_all_fields(field_label, partial_phrase)
 
     def __iter__(self):
@@ -84,8 +120,31 @@ class MarcFieldSearch:
 
 class MarcSubFieldSearch:
     """a class to search for MARC subfields matching a particular label string
+
+    Usage: 
+        subfield_search = MarcSubfieldSearch(field_label="Linkage")
+        for subfield in subfield_search:
+            ...
+            # do something
+
+    Search results are objects with the following properties:
+   
+    - marc_field
+    - marc_field_label
+    - subfield_code
+    - subfield_label
     """
     def __init__(self, field_label=None, partial_phrase=None):
+        """instantiates an instance of the class
+
+        KWArgs
+            field_label (str): a string matching exactly 1 MARC subfield label
+            partial_phrase (str): a string that may be in 1 or MARC subfield labels
+
+        Returns:
+            MarcSubFieldSearch. An instance of the MarcSubFieldSearch class.
+        """
+ 
         self.subfield_options = self._find_subfield_options(field_label, partial_phrase)
 
     def __iter__(self):
