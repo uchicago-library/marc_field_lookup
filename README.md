@@ -69,7 +69,7 @@ The results of a MarcSubFieldSearch have those properties as well as the followi
 - subfield_code
 - subfield_label
 
-## Contract for retrieve subfields from MarcField
+## Contract for subfields from MarcField.subfields
 
 Every subfield in a given MarcField instance has the following properties:
 
