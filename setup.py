@@ -13,8 +13,6 @@ setup(
         'marclookup': ['marc-schema.json']
     },
     packages=['marclookup'],
-
-
     classifiers=[
         "License :: OSI Approved :: GNU Library or Lesser " +
         "General Public License (LGPL)",
