@@ -1,1 +1,1 @@
-include data/marc-schema.json
+global-include data/marc-schema.json

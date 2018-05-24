@@ -9,7 +9,12 @@ setup(
     description="A pythonic library to allow exploring and browsing MARC21 schema",
     keywords="python3.6 iiif-presentation manifests marc",
     include_page_data=True,
+    package_data = [
+        ['data/marc-schema.json']
+    ],
     packages=['marclookup'],
+
+
     classifiers=[
         "License :: OSI Approved :: GNU Library or Lesser " +
         "General Public License (LGPL)",
