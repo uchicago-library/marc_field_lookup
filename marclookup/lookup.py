@@ -39,8 +39,8 @@ class MarcField:
         subfields = []    
         for n_field in LOOKUP["fields"]:
             if n_field == code:
-                subfields = self._find_all_subfields(n_field, LOOKUP['fields'][n_field]['subfields'])
-                label = LOOKUP['fields'][n_field]['label']
+                subfields = self._find_all_subfields(n_field, LOOKUP['fields'][n_field].get('subfields'))
+                label = LOOKUP['fields'][n_field].get('label')
                 field = n_field
         return field, label, subfields
 
@@ -54,11 +54,12 @@ class MarcField:
 
     def _find_all_subfields(self, n_field, subfields):
         output = []
-        for subfield in subfields:
-            subf_dict = LOOKUP["fields"][n_field]["subfields"][subfield]
-            subfield_record = namedtuple('subfield', ['code', 'label'])
-            a_record = subfield_record(subfield, subf_dict.get("label"))
-            output.append(a_record)
+        if subfields:
+            for subfield in subfields:
+                subf_dict = LOOKUP["fields"][n_field]["subfields"][subfield]
+                subfield_record = namedtuple('subfield', ['code', 'label'])
+                a_record = subfield_record(subfield, subf_dict.get("label"))
+                output.append(a_record)
         return output
 
 class MarcFieldSearch:
@@ -182,6 +183,27 @@ class MarcSubFieldSearch:
                                               subfield_code=subfield,
                                               subfield_label=subf_dict.get("label"))
                         subfield_options.append(a_result)
- 
         return subfield_options
- 
+
+class MarcFieldBrowse:
+    def __init__(self):
+        self.fields  = self._get_all_fields()
+
+    def _get_all_fields(self):
+        output = []
+        for n_field in LOOKUP["fields"]:
+            a_field = MarcField(field=n_field)
+            output.append(a_field)
+        return sorted(output, key=lambda x: x.field)
+
+    def __str__(self):
+        output_str = ""
+        for n_field in self.fields:
+            field = n_field.field
+            label = n_field.label
+            subfields = [(x.code, x.label) for x in n_field.subfields]
+            output_str += "{} with label {}".format(field, label)
+            for subf in subfields:
+                output_str += "\n\tsubfield {} with label {}".format(subf[0], subf[1])
+            output_str += "\n"
+        return output_str
