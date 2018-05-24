@@ -4,4 +4,7 @@ from os.path import abspath
 
 DATA = abspath(pkg_resources.resource_filename(__name__, "data/marc_schema.json"))
 
-print(DATA)
+print(exists(DATA))
+
+DATA = json.load(open(DATA, 'r'))
+

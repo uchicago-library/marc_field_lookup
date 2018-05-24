@@ -1,1 +1,1 @@
-recursive-include marclookup *.json
+include data/marc-schema.json
