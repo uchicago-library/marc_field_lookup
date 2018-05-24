@@ -8,7 +8,7 @@ setup(
     license="LGPL3.0",
     description="A pythonic library to allow exploring and browsing MARC21 schema",
     keywords="python3.6 iiif-presentation manifests marc",
-    install_package_data=True,
+    include_page_data=True,
     package_data = {'data': ["data/marc.json"]},
     packages=['marclookup'],
     classifiers=[
