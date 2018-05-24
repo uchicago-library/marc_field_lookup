@@ -1,6 +1,6 @@
-import pkgutil
+import pkg_resources
 import json
 
-DATA = json.loads(pkgutil.get_data("marclookup", "data/marc-schema.json").decode("utf-8"))
+DATA = pkg_resources.resource_filename(__name__, "data/marc_schema.json")
 
-#LOOKUP = json.load(pkgutil.get_data('marclookup', "data/marc.json"))["fields"]
+print(DATA)
