@@ -7,6 +7,7 @@ from configparser import SafeConfigParser
 from appdirs import user_config_dir
 from os.path import join
 
+<<<<<<< HEAD
 def transform_config(config_data):
     master = {"fields": {}}
     for field_name in config_data:
@@ -40,3 +41,7 @@ if exists(LOCAL_CONFIG_FILE):
     PKG_DATA["fields"].update(LOCAL_DATA["fields"])
 
 DATA = PKG_DATA
+=======
+DATA = abspath(pkg_resources.resource_filename(__name__, "marc-schema.json"))
+DATA = json.load(open(DATA, 'r', encoding="utf-8"))
+>>>>>>> 147c2def57befa0910ee1ce71b6ab52f92a059db
