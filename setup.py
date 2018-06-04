@@ -20,5 +20,7 @@ setup(
         "Intended Audience :: Education",
         "Operating System :: POSIX :: Linux",
     ],
-    install_requires = []
+    install_requires = [
+        'configobj'
+    ]
 )
