@@ -76,6 +76,10 @@ Every subfield in a given MarcField instance has the following properties:
 - code
 - label
 
+## Documentation about adding local MARC fields
+
+See [this wiki page](https://github.com/uchicago-library/marc_field_lookup/wiki/how-to-write-local-field-config) in the marc_field_lookup repo for explanation.
+
 ## Credit
 
 - Thanks to [pkiraly](https://github.com/pkiraly) for the [JSON schema of the marc structure](https://raw.githubusercontent.com/pkiraly/metadata-qa-marc/master/src/main/resources/marc-schema.json)

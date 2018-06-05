@@ -1,6 +1,7 @@
 """test cases for the marclookup library
 """
 
+from io import StringIO
 from unittest import TestCase
 from marclookup.lookup import MarcField, MarcFieldSearch, MarcSubFieldSearch
 
